@@ -1,0 +1,96 @@
+              {activeTab === 'implantology' && (
+                <div className="space-y-4">
+                  <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <Syringe className="w-5 h-5" />
+                    Implantologie
+                  </h3>
+
+                  <div className="space-y-3">
+                    <div className="bg-white rounded-lg border border-gray-200 p-4">
+                      <h4 className="font-medium text-sm text-gray-900 mb-2 flex items-center gap-2">
+                        <Package className="w-4 h-4" />
+                        Implantaten
+                      </h4>
+                      <button
+                        onClick={() => setShowImplantSelector(true)}
+                        className="w-full px-3 py-2 bg-teal-600 text-white rounded hover:bg-teal-700 text-sm"
+                      >
+                        + Implantaat toevoegen
+                      </button>
+                      {selectedImplants.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          {selectedImplants.map((imp, idx) => (
+                            <div key={idx} className="text-xs bg-teal-50 p-2 rounded border border-teal-200">
+                              <p className="font-medium">{imp.merk} {imp.systeem}</p>
+                              <p className="text-gray-600">Ø{imp.diameter} × {imp.lengte}mm - Positie: {imp.positie}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="bg-white rounded-lg border border-gray-200 p-4">
+                      <h4 className="font-medium text-sm text-gray-900 mb-2 flex items-center gap-2">
+                        <Layers className="w-4 h-4" />
+                        Biomaterialen
+                      </h4>
+                      <button
+                        onClick={() => setShowBiomaterialSelector(true)}
+                        className="w-full px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 text-sm"
+                      >
+                        + Biomateriaal toevoegen
+                      </button>
+                      {selectedBiomaterials.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          {selectedBiomaterials.map((bio, idx) => (
+                            <div key={idx} className="text-xs bg-indigo-50 p-2 rounded border border-indigo-200">
+                              <p className="font-medium">{bio.productnaam}</p>
+                              <p className="text-gray-600">{bio.type} - {bio.hoeveelheid_gebruikt}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="bg-white rounded-lg border border-gray-200 p-4">
+                      <h4 className="font-medium text-sm text-gray-900 mb-2 flex items-center gap-2">
+                        <Wrench className="w-4 h-4" />
+                        Prothetische Componenten
+                      </h4>
+                      <button
+                        onClick={() => setShowProstheticSelector(true)}
+                        className="w-full px-3 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 text-sm"
+                      >
+                        + Component toevoegen
+                      </button>
+                      {selectedProsthetics.length > 0 && (
+                        <div className="mt-3 space-y-2">
+                          {selectedProsthetics.map((pros, idx) => (
+                            <div key={idx} className="text-xs bg-purple-50 p-2 rounded border border-purple-200">
+                              <p className="font-medium">{pros.type} - {pros.merk}</p>
+                              <p className="text-gray-600">{pros.aansluiting} - Positie: {pros.positie}</p>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border-2 border-purple-200 p-4">
+                      <h4 className="font-medium text-sm text-purple-900 mb-2 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4" />
+                        AI Chirurgisch Verslag
+                      </h4>
+                      <p className="text-xs text-purple-700 mb-3">
+                        Genereer professioneel chirurgisch verslag
+                      </p>
+                      <button
+                        onClick={() => setShowSurgicalReportForm(true)}
+                        disabled={selectedImplants.length === 0 && selectedBiomaterials.length === 0 && selectedProsthetics.length === 0}
+                        className="w-full px-3 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 text-sm disabled:opacity-50"
+                      >
+                        Genereer Verslag
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
